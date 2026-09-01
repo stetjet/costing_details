@@ -70,13 +70,16 @@ def find_correct_file(input_files: list[str]):
             data_reader = csv.reader(data_set)
             purchase_orders = []
             for row in list(data_reader)[1:]:
-                purchase_orders.append(int(row[6]))
+                try:
+                    purchase_orders.append(int(row[6]))
+                except:
+                    continue
             file_counts[max(purchase_orders)] = file
 
     highest = max(list(file_counts.keys()))
 
     chosen_file = file_counts[highest]
-
+    print(chosen_file)
     return chosen_file
 
 def main():
