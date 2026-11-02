@@ -27,26 +27,21 @@ class LineItem:
         
         self.description = description
         self.vendor = vendor
-        if uom == 'Box':
-            self.uom = 'Each'
-            self.unit_cost = float(unit_cost)
-
-
-        elif uom == 'Bottle':
+        if uom == 'Box' or uom == 'Bag' or uom == 'Package' or uom == 'Bottle' or uom == 'Thousand':
             self.uom = 'Each'
             self.unit_cost = float(unit_cost)
 
         elif uom == 'Gallon':
             self.uom = 'Liter'
-            self.unit_cost = round(float(unit_cost) / 3.78541, 2)
+            self.unit_cost = round(float(unit_cost) / 3.78541, 4)
 
         elif uom == 'Gram':
             self.uom = 'Kilogram'
-            self.unit_cost = round(float(unit_cost) * 1000, 2)
+            self.unit_cost = round(float(unit_cost) * 1000, 4)
 
         elif uom == 'Pound':
             self.uom = 'Kilogram'
-            self.unit_cost = round(float(unit_cost) / 0.453592, 2)
+            self.unit_cost = round(float(unit_cost) / 0.453592, 4)
 
         else:
             self.uom = uom
